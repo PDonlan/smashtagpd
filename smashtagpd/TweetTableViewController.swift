@@ -60,7 +60,7 @@ class TweetTableViewController: UITableViewController {
         cell.textLabel?.text = tweet.text
         cell.detailTextLabel?.text = tweet.user.name
 
-        return cell
+        return cell  //wombat
     }
     
 
