@@ -31,6 +31,7 @@ class TweetTableViewCell: UITableViewCell
         
         if let tweet = self.tweet
         {
+            tweetTextLabel?.text = tweet.text
             if tweetTextLabel?.text != nil {
                 for _ in tweet.media {
                     tweetTextLabel.text! += " wombat"
