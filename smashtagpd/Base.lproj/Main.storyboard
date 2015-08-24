@@ -2,13 +2,14 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eBV-zm-9R4">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Tweet Table View Controller-->
         <scene sceneID="vLg-d2-PvU">
             <objects>
                 <tableViewController id="sqz-Wi-amg" customClass="TweetTableViewController" customModule="smashtagpd" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="AON-NX-PKZ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" sectionHeaderHeight="22" sectionFooterHeight="22" id="AON-NX-PKZ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -19,25 +20,49 @@
                             <textInputTraits key="textInputTraits" keyboardType="twitter"/>
                         </textField>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Tweet" textLabel="yp5-eS-5hY" detailTextLabel="0sM-yG-ZQz" style="IBUITableViewCellStyleSubtitle" id="8dU-NH-gXN">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Tweet" rowHeight="130" id="8dU-NH-gXN" customClass="TweetTableViewCell" customModule="smashtagpd" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8dU-NH-gXN" id="trG-q3-RkO">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yp5-eS-5hY">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fx5-kz-W8E">
+                                            <rect key="frame" x="64" y="8" width="528" height="20.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0sM-yG-ZQz">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mMq-8q-t5B">
+                                            <rect key="frame" x="8" y="8" width="48" height="48"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="48" id="C1v-s1-Pvf"/>
+                                                <constraint firstAttribute="width" constant="48" id="qZM-dD-nqo"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tH8-G9-osC">
+                                            <rect key="frame" x="64" y="37" width="528" height="84.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="fx5-kz-W8E" firstAttribute="leading" secondItem="mMq-8q-t5B" secondAttribute="trailing" constant="8" id="1ao-sx-Bgo"/>
+                                        <constraint firstItem="tH8-G9-osC" firstAttribute="width" secondItem="fx5-kz-W8E" secondAttribute="width" id="6AZ-G9-pTh"/>
+                                        <constraint firstItem="tH8-G9-osC" firstAttribute="top" secondItem="trG-q3-RkO" secondAttribute="topMargin" constant="29" id="8CW-Me-sxk"/>
+                                        <constraint firstItem="mMq-8q-t5B" firstAttribute="top" secondItem="trG-q3-RkO" secondAttribute="topMargin" id="9bj-7l-RKd"/>
+                                        <constraint firstItem="tH8-G9-osC" firstAttribute="top" secondItem="fx5-kz-W8E" secondAttribute="bottom" constant="8.5" id="Vxz-vs-t0Q"/>
+                                        <constraint firstItem="tH8-G9-osC" firstAttribute="bottom" secondItem="trG-q3-RkO" secondAttribute="bottomMargin" id="YIk-uV-lfm"/>
+                                        <constraint firstItem="fx5-kz-W8E" firstAttribute="top" secondItem="trG-q3-RkO" secondAttribute="topMargin" id="f2J-Me-q4g"/>
+                                        <constraint firstItem="fx5-kz-W8E" firstAttribute="trailing" secondItem="trG-q3-RkO" secondAttribute="trailingMargin" id="gMV-KV-r1g"/>
+                                        <constraint firstItem="tH8-G9-osC" firstAttribute="trailing" secondItem="trG-q3-RkO" secondAttribute="trailingMargin" id="jZi-e3-YEd"/>
+                                        <constraint firstItem="mMq-8q-t5B" firstAttribute="leading" secondItem="trG-q3-RkO" secondAttribute="leadingMargin" id="pEk-OL-D3G"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="tweetProfileImageView" destination="mMq-8q-t5B" id="JeE-C8-3ot"/>
+                                    <outlet property="tweetScreenNameLabel" destination="fx5-kz-W8E" id="ivP-FO-fts"/>
+                                    <outlet property="tweetTextLabel" destination="tH8-G9-osC" id="YDG-bw-Pz7"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
