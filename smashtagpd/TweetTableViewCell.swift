@@ -34,13 +34,13 @@ class TweetTableViewCell: UITableViewCell
             tweetTextLabel?.text = tweet.text
             if tweetTextLabel?.text != nil {
                 for _ in tweet.media {
-                    tweetTextLabel.text! += " wombat"
+                    tweetTextLabel.text! += " break"
                 }
             }
             
             tweetScreenNameLabel?.text = "\(tweet.user)"  //tweet user description
             
-            if let profileImageURL = tweet.user.profileImageURL {   //blocks main thread todo: fix
+            if let profileImageURL = tweet.user.profileImageURL {           //blocks main thread todo: fix
                 if let imageData = NSData(contentsOfURL: profileImageURL)
                 {
                     tweetProfileImageView?.image = UIImage(data: imageData)

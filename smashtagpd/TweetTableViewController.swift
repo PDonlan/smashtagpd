@@ -16,6 +16,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
     var tweets = [[Tweet]]()  //array of arrays
     var searchText: String? = "#stanford" {
         didSet {
+            lastSuccessfulRequest = nil
             searchTextField?.text = searchText
             tweets.removeAll()
             tableView.reloadData()
@@ -28,7 +29,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableViewAutomaticDimension //calculate size
         refresh()
         
         // Uncomment the following line to preserve selection between presentations
@@ -37,27 +38,51 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    var lastSuccessfulRequest: TwitterRequest?
+    
+    var nextRequestToAttempt: TwitterRequest?
+        {
+            if lastSuccessfulRequest == nil {
+                if searchText != nil {
+                    return TwitterRequest(search: searchText!, count:100)
+                } else {
+                    return nil
+                }
+            } else {
+                return lastSuccessfulRequest!.requestForNewer
+            }
+        }
+    
     
     func refresh() {
+        refreshControl?.beginRefreshing()
         if searchText != nil {
-            let request = TwitterRequest(search: searchText!, count:100)
-            request.fetchTweets {newTweets in
-                
-                dispatch_async(dispatch_get_main_queue()){
-                    if newTweets.count > 0
-                    {
-                        self.tweets.insert(newTweets, atIndex: 0)
-                        self.tableView.reloadData()
+            if let request = nextRequestToAttempt {         //fetch new tweets and refresh UI
+                request.fetchTweets {newTweets in
+                    
+                    dispatch_async(dispatch_get_main_queue()){
+                        if newTweets.count > 0
+                        {   self.lastSuccessfulRequest = request
+                            self.tweets.insert(newTweets, atIndex: 0)
+                            self.tableView.reloadData()
+                        }
+                        self.refreshControl?.endRefreshing()
                     }
                 }
             }
+        } else {
+            refreshControl?.endRefreshing()
         }
         
 
     }
 
+    @IBAction func refresh(sender: UIRefreshControl) {     //refresh UI
+        refresh()
+        
+    }
  
-    @IBOutlet weak var searchTextField: UITextField! {
+    @IBOutlet weak var searchTextField: UITextField! {     //UI action for new tweet search
         didSet {
             searchTextField.delegate = self
             searchTextField.text = searchText
@@ -68,7 +93,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if textField == searchTextField {
-            textField.resignFirstResponder()
+            textField.resignFirstResponder()            //shut off refresh indication
             searchText = textField.text
         }
         return true
