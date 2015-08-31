@@ -15,6 +15,7 @@ class TweetTableViewCell: UITableViewCell
             updateUI()
         }
     }
+    
 
     @IBOutlet weak var tweetProfileImageView: UIImageView!
     
@@ -22,18 +23,27 @@ class TweetTableViewCell: UITableViewCell
 
     @IBOutlet weak var tweetTextLabel: UILabel!
     
-    func updateUI() {
+    
+    func updateUI() {                               //write out tweets
         tweetTextLabel?.attributedText = nil
         tweetScreenNameLabel?.text = nil
         tweetProfileImageView?.image = nil
         
         // load new information from our tweet if any
         
+
+        
         if let tweet = self.tweet
         {
             tweetTextLabel?.text = tweet.text
             if tweetTextLabel?.text != nil {
-                for _ in tweet.media {
+                for _ in tweet.media {                  //for loop is here Mr McGoo
+                    var label = tweet
+                    var text = NSMutableAttributedString(attributedString: label.attributedText)
+                    text.addAttribute(NSForegroundColorAttributeName, value:UIColor.redColor(), range:NSRange(location: 0, length: 4))
+                    text.addAttribute(NSForegroundColorAttributeName, value:UIColor.greenColor(), range:NSRange(location:4, length: 4))
+                    label.attributedText = text
+                    label.text = tweet.text
                     tweetTextLabel.text! += " break"
                 }
             }

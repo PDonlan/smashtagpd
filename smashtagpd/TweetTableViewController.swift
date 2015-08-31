@@ -87,8 +87,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
             searchTextField.delegate = self
             searchTextField.text = searchText
             
-        }
-        
+        }        
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -122,7 +121,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
 
         cell.tweet = tweets[indexPath.section][indexPath.row]
 
-        return cell  //wombat
+        return cell
     }
     
 
