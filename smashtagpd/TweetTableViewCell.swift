@@ -25,6 +25,7 @@ class TweetTableViewCell: UITableViewCell
     
     
     func updateUI() {                               //write out tweets
+//        println(tweet)
         tweetTextLabel?.attributedText = nil
         tweetScreenNameLabel?.text = nil
         tweetProfileImageView?.image = nil
@@ -38,15 +39,17 @@ class TweetTableViewCell: UITableViewCell
             tweetTextLabel?.text = tweet.text
             if tweetTextLabel?.text != nil {
                 for index in tweet.media {                  //for loop is here Mr MaGoo
-                    println("index = /index")
-                    var label = tweetTextLabel
-                    var text = NSMutableAttributedString(attributedString: label.attributedText)
-                    text.addAttribute(NSForegroundColorAttributeName, value:UIColor.redColor(), range:NSRange(location: 0, length: 4))
-                    text.addAttribute(NSForegroundColorAttributeName, value:UIColor.greenColor(), range:NSRange(location:4, length: 4))
-                    label.attributedText = text
+                    for index in tweet.userMentions {
+                        println(tweet.userMentions)
+                        var label = tweetTextLabel
+                        var text = NSMutableAttributedString(attributedString: label.attributedText)
+                        text.addAttribute(NSForegroundColorAttributeName, value:UIColor.redColor(), range:NSRange(location: 0, length: 4))
+                        text.addAttribute(NSForegroundColorAttributeName, value:UIColor.greenColor(), range:NSRange(location:4, length: 4))
+                        label.attributedText = text
 //                    label.attributedText = tweet.text
-                    tweetTextLabel = label
+                        tweetTextLabel = label
  //                   tweetTextLabel.text! += " break"
+                    }
                 }
             }
             
