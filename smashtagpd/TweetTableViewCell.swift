@@ -38,6 +38,7 @@ class TweetTableViewCell: UITableViewCell
             tweetTextLabel?.text = tweet.text
             if tweetTextLabel?.text != nil {
                 for index in tweet.media {                  //for loop is here Mr MaGoo
+                    println("index = /index")
                     var label = tweetTextLabel
                     var text = NSMutableAttributedString(attributedString: label.attributedText)
                     text.addAttribute(NSForegroundColorAttributeName, value:UIColor.redColor(), range:NSRange(location: 0, length: 4))
