@@ -37,13 +37,14 @@ class TweetTableViewCell: UITableViewCell
         {
             tweetTextLabel?.text = tweet.text
             if tweetTextLabel?.text != nil {
-                for _ in tweet.media {                  //for loop is here Mr McGoo
-                    var label = tweet
+                for _ in tweet.media {                  //for loop is here Mr MaGoo
+                    var label = tweetTextLabel
                     var text = NSMutableAttributedString(attributedString: label.attributedText)
                     text.addAttribute(NSForegroundColorAttributeName, value:UIColor.redColor(), range:NSRange(location: 0, length: 4))
                     text.addAttribute(NSForegroundColorAttributeName, value:UIColor.greenColor(), range:NSRange(location:4, length: 4))
                     label.attributedText = text
-                    label.text = tweet.text
+ //                   label.text = tweet.text
+                    tweetTextLabel.text = label.text
                     tweetTextLabel.text! += " break"
                 }
             }
