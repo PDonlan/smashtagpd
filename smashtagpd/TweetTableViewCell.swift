@@ -29,6 +29,7 @@ class TweetTableViewCell: UITableViewCell
         tweetTextLabel?.attributedText = nil
         tweetScreenNameLabel?.text = nil
         tweetProfileImageView?.image = nil
+//        println("updateUI called")
         
         // load new information from our tweet if any
         
@@ -36,22 +37,21 @@ class TweetTableViewCell: UITableViewCell
         {
             tweetTextLabel?.text = tweet.text
             if tweetTextLabel?.text != nil {
-                for index in tweet.media {                  //for loop is here Mr MaGoo
- //                   let index = tweet.userMentions[0]
-                    println(tweet.userMentions)
-                    println(tweet.hashtags)
-                    println(tweet.description)
-                    for _ in tweet.userMentions {
-                        println(tweet.userMentions)
-                        var label = tweetTextLabel
-                        var text = NSMutableAttributedString(attributedString: label.attributedText)
-                        text.addAttribute(NSForegroundColorAttributeName, value:UIColor.redColor(), range:NSRange(location: 0, length: 2))
-                        text.addAttribute(NSForegroundColorAttributeName, value:UIColor.greenColor(), range:NSRange(location:2, length: 2))
-                        label.attributedText = text
-//                    label.attributedText = tweet.text
-                        tweetTextLabel = label
- //                   tweetTextLabel.text! += " break"  instructor had some strange icon here
-                    }
+                for index in tweet.hashtags {                  //for loop is here Mr MaGoo
+                    var label = tweetTextLabel
+                    var text = NSMutableAttributedString(attributedString: label.attributedText)
+                    text.addAttribute(NSForegroundColorAttributeName, value:UIColor.redColor(), range:NSRange(location: 0, length: 2))
+                    text.addAttribute(NSForegroundColorAttributeName, value:UIColor.greenColor(), range:NSRange(location:2, length: 2))
+                    label.attributedText = text
+                    tweetTextLabel = label
+                }
+                for index in tweet.userMentions {                  //for loop is here Mr MaGoo
+                    var label = tweetTextLabel
+                    var text = NSMutableAttributedString(attributedString: label.attributedText)
+                    text.addAttribute(NSForegroundColorAttributeName, value:UIColor.redColor(), range:NSRange(location: 0, length: 2))
+                    text.addAttribute(NSForegroundColorAttributeName, value:UIColor.greenColor(), range:NSRange(location:2, length: 2))
+                    label.attributedText = text
+                    tweetTextLabel = label
                 }
             }
             
