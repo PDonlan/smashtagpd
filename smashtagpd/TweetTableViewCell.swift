@@ -36,23 +36,23 @@ class TweetTableViewCell: UITableViewCell
         if let tweet = self.tweet
         {
             tweetTextLabel?.text = tweet.text
+            var label = tweetTextLabel
+            var text = NSMutableAttributedString(attributedString: label.attributedText)
             if tweetTextLabel?.text != nil {
+//                var label = tweetTextLabel
                 for index in tweet.hashtags {                  //for loop is here Mr MaGoo
-                    var label = tweetTextLabel
-                    var text = NSMutableAttributedString(attributedString: label.attributedText)
+//                    var text = NSMutableAttributedString(attributedString: label.attributedText)
                     text.addAttribute(NSForegroundColorAttributeName, value:UIColor.redColor(), range:NSRange(location: 0, length: 2))
                     text.addAttribute(NSForegroundColorAttributeName, value:UIColor.greenColor(), range:NSRange(location:2, length: 2))
                     label.attributedText = text
-                    tweetTextLabel = label
                 }
                 for index in tweet.userMentions {                  //for loop is here Mr MaGoo
-                    var label = tweetTextLabel
-                    var text = NSMutableAttributedString(attributedString: label.attributedText)
+ //                   var text = NSMutableAttributedString(attributedString: label.attributedText)
                     text.addAttribute(NSForegroundColorAttributeName, value:UIColor.redColor(), range:NSRange(location: 0, length: 2))
                     text.addAttribute(NSForegroundColorAttributeName, value:UIColor.greenColor(), range:NSRange(location:2, length: 2))
                     label.attributedText = text
-                    tweetTextLabel = label
                 }
+                tweetTextLabel = label
             }
             
             tweetScreenNameLabel?.text = "\(tweet.user)"  //tweet user description
