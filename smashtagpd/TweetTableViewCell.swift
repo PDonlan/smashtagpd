@@ -39,6 +39,8 @@ class TweetTableViewCell: UITableViewCell
             tweetTextLabel?.text = tweet.text
             if tweetTextLabel?.text != nil {
                 for index in tweet.media {                  //for loop is here Mr MaGoo
+                    let index = tweet.userMentions[0]
+                    println(tweet.userMentions)
                     for index in tweet.userMentions {
                         println(tweet.userMentions)
                         var label = tweetTextLabel
@@ -48,7 +50,7 @@ class TweetTableViewCell: UITableViewCell
                         label.attributedText = text
 //                    label.attributedText = tweet.text
                         tweetTextLabel = label
- //                   tweetTextLabel.text! += " break"
+ //                   tweetTextLabel.text! += " break"  instructor had some strange icon here
                     }
                 }
             }
