@@ -16,23 +16,18 @@ class TweetTableViewCell: UITableViewCell
         }
     }
     
-
     @IBOutlet weak var tweetProfileImageView: UIImageView!
     
     @IBOutlet weak var tweetScreenNameLabel: UILabel!
 
     @IBOutlet weak var tweetTextLabel: UILabel!
     
-    
     func updateUI() {                               //write out tweets
-//        println(tweet)
         tweetTextLabel?.attributedText = nil
         tweetScreenNameLabel?.text = nil
         tweetProfileImageView?.image = nil
-//        println("updateUI called")
-        
+      
         // load new information from our tweet if any
-        
         if let tweet = self.tweet
         {
             tweetTextLabel?.text = tweet.text
@@ -47,15 +42,12 @@ class TweetTableViewCell: UITableViewCell
                 text.addAttribute(NSForegroundColorAttributeName, value:UIColor.blueColor(), range:index.nsrange)
             }
             tweetTextLabel.attributedText = text
-            println(tweet.hashtags[0])
-            
             tweetScreenNameLabel?.text = "\(tweet.user)"  //tweet user description
             
             if let profileImageURL = tweet.user.profileImageURL {           //blocks main thread todo: fix
                 if let imageData = NSData(contentsOfURL: profileImageURL)
                 {
                     tweetProfileImageView?.image = UIImage(data: imageData)
-                    
                 }
             
             }
