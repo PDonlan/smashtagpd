@@ -180,6 +180,8 @@
 		2010FA911B7E617600E8D0C4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Paul Donlan";
 				TargetAttributes = {
