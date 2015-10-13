@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QRU-Xw-stn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eBV-zm-9R4">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -72,6 +72,7 @@
                                     <outlet property="tweetProfileImageView" destination="mMq-8q-t5B" id="JeE-C8-3ot"/>
                                     <outlet property="tweetScreenNameLabel" destination="fx5-kz-W8E" id="ivP-FO-fts"/>
                                     <outlet property="tweetTextLabel" destination="tH8-G9-osC" id="YDG-bw-Pz7"/>
+                                    <segue destination="ooy-4Q-K9V" kind="showDetail" id="SVA-cw-QhX"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -92,95 +93,42 @@
                     </refreshControl>
                     <connections>
                         <outlet property="searchTextField" destination="Q7x-Xq-dXP" id="UNb-lS-2QM"/>
-                        <segue destination="Czf-Rg-nws" kind="showDetail" identifier="ShowTweetDetail" id="8Iw-4m-oi1"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XMX-9r-w9o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1168" y="345"/>
+            <point key="canvasLocation" x="562" y="-139"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="6dE-e1-2WE">
+        <!--Tweet Detail Table View Controller-->
+        <scene sceneID="HIP-Ha-ebF">
             <objects>
-                <navigationController id="Czf-Rg-nws" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pwZ-zJ-dge">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="OJJ-G0-q5E" kind="relationship" relationship="rootViewController" id="uJ9-n5-UCA"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5IQ-af-PaE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="356" y="1098"/>
-        </scene>
-        <!--TweetDetailView-->
-        <scene sceneID="cnz-zP-GK6">
-            <objects>
-                <tableViewController id="OJJ-G0-q5E" customClass="TweetDetailView" customModule="smashtagpd" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="sGf-4s-Khf">
+                <tableViewController id="ooy-4Q-K9V" customClass="TweetDetailTableViewController" customModule="smashtagpd" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Uz8-cx-x0u">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetDetail" textLabel="Xmz-bQ-BQB" detailTextLabel="bsE-PG-0g1" style="IBUITableViewCellStyleSubtitle" id="Fnz-n8-lqT" customClass="TweetDetailView" customModule="smashtagpd" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="SfJ-vQ-JZF">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fnz-n8-lqT" id="lUX-8v-YG3">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SfJ-vQ-JZF" id="zgM-ll-0J1">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xmz-bQ-BQB">
-                                            <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bsE-PG-0g1">
-                                            <rect key="frame" x="15" y="25.5" width="40.5" height="13.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="OJJ-G0-q5E" id="NkM-cY-TFZ"/>
-                            <outlet property="delegate" destination="OJJ-G0-q5E" id="X7D-rz-LY3"/>
+                            <outlet property="dataSource" destination="ooy-4Q-K9V" id="3f0-p1-aeL"/>
+                            <outlet property="delegate" destination="ooy-4Q-K9V" id="FlU-ae-k93"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="TweetDetailView" id="2kU-uk-wCC"/>
-                    <connections>
-                        <outlet property="tweetImages" destination="Fnz-n8-lqT" id="PlA-Aq-uc9"/>
-                    </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WWU-FI-Kr6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cfi-07-MxM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1172" y="1098"/>
-        </scene>
-        <!--Split View Controller-->
-        <scene sceneID="D7Q-6r-B0w">
-            <objects>
-                <splitViewController id="QRU-Xw-stn" sceneMemberID="viewController">
-                    <connections>
-                        <segue destination="eBV-zm-9R4" kind="relationship" relationship="masterViewController" id="rRD-MN-LaR"/>
-                        <segue destination="Czf-Rg-nws" kind="relationship" relationship="detailViewController" id="Sc9-60-dBT"/>
-                    </connections>
-                </splitViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yrJ-z2-std" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-558" y="715"/>
+            <point key="canvasLocation" x="562" y="639"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bPq-da-Ug2">
@@ -199,10 +147,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zgz-WY-oMc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="356" y="345"/>
+            <point key="canvasLocation" x="-132" y="-139"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="8Iw-4m-oi1"/>
-    </inferredMetricsTieBreakers>
 </document>
