@@ -10,11 +10,25 @@ import UIKit
 
 class TweetDetailView: UITableViewCell {
     
-    
+    var tweet:Tweet
 
-    @IBOutlet weak var tweetImages: UIImageView! {
-        
+    @IBOutlet weak var tweetImages: TweetDetailView! {
+        if let tweetImages = tweet.media {
+            
+        }
     }
+
+//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        
+//        return tweets[media].count
+//    }
+//    
+//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        
+//        return tweets[section].count
+//    }
+
+    
 //    override func awakeFromNib() {
 //        super.awakeFromNib()
 //        // Initialization code
