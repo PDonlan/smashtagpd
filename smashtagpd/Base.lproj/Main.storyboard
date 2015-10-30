@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eBV-zm-9R4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eBV-zm-9R4">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -72,7 +72,7 @@
                                     <outlet property="tweetProfileImageView" destination="mMq-8q-t5B" id="JeE-C8-3ot"/>
                                     <outlet property="tweetScreenNameLabel" destination="fx5-kz-W8E" id="ivP-FO-fts"/>
                                     <outlet property="tweetTextLabel" destination="tH8-G9-osC" id="YDG-bw-Pz7"/>
-                                    <segue destination="ooy-4Q-K9V" kind="showDetail" id="SVA-cw-QhX"/>
+                                    <segue destination="ooy-4Q-K9V" kind="show" identifier="tweetDetailSegue" id="SVA-cw-QhX"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -99,22 +99,32 @@
             </objects>
             <point key="canvasLocation" x="562" y="-139"/>
         </scene>
-        <!--Tweet Detail Table View Controller-->
+        <!--Wombat Table View Controller-->
         <scene sceneID="HIP-Ha-ebF">
             <objects>
-                <tableViewController id="ooy-4Q-K9V" customClass="TweetDetailTableViewController" customModule="smashtagpd" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ooy-4Q-K9V" customClass="WombatTableViewController" customModule="smashtagpd" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Uz8-cx-x0u">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="SfJ-vQ-JZF">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WombatCell" textLabel="eYg-Sm-7gx" style="IBUITableViewCellStyleDefault" id="SfJ-vQ-JZF">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SfJ-vQ-JZF" id="zgM-ll-0J1">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eYg-Sm-7gx">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>

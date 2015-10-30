@@ -32,7 +32,7 @@ class TweetTableViewCell: UITableViewCell
         {
             tweetTextLabel?.text = tweet.text
             var text = NSMutableAttributedString(attributedString: tweetTextLabel.attributedText!)
-            for index in tweet.hashtags {                  //for loop is here Mr MaGoo
+            for index in tweet.hashtags {
                 text.addAttribute(NSForegroundColorAttributeName, value:UIColor.greenColor(), range:index.nsrange)
             }
             for index in tweet.userMentions {

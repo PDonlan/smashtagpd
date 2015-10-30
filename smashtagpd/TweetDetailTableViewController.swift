@@ -9,6 +9,17 @@
 import UIKit
 
 class TweetDetailTableViewController: UITableViewController {
+    
+    var tweet: Tweet? {
+        didSet {
+            updateUI()
+        }
+    }
+
+    func updateUI(){
+        self.title = "\(tweet?.user)" //tweet?.id
+        // get table view to display two sections say hashtags and mentions then query # of sections and return ttiles
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

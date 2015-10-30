@@ -165,18 +165,21 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        /**
-        // Get the new view controller using [segue destinationViewController].
-        var destination =  segue.destinationViewController as? UIViewController
-        if let navcon = destination as? UINavigationController {
-            destination = navcon.visibleViewController
-        }
-        if let dtvc = destination as? TweetDetailViewController {
-            if let _ = segue.identifier {
-                        // Pass the selected object to the new view controller.
+        print(segue.identifier)
+        
+ //       if let dtvc = segue.destinationViewController as? TweetDetailTableViewController {
+        if let dtvc = segue.destinationViewController as? WombatTableViewController {
+            print(sender)
+            if let cell = sender as? TweetTableViewCell {
+
+//                print(cell.tweet)
+//                dtvc.tweet = cell.tweet
             }
+            
+                        // Pass the selected object to the new view controller.
+        
         }
-*/
+
     }
 
 
