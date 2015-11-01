@@ -99,17 +99,17 @@
             </objects>
             <point key="canvasLocation" x="562" y="-139"/>
         </scene>
-        <!--Wombat Table View Controller-->
+        <!--Tweet Detail Table View Controller-->
         <scene sceneID="HIP-Ha-ebF">
             <objects>
-                <tableViewController id="ooy-4Q-K9V" customClass="WombatTableViewController" customModule="smashtagpd" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ooy-4Q-K9V" customClass="TweetDetailTableViewController" customModule="smashtagpd" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Uz8-cx-x0u">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WombatCell" textLabel="eYg-Sm-7gx" style="IBUITableViewCellStyleDefault" id="SfJ-vQ-JZF">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetDetail" textLabel="eYg-Sm-7gx" style="IBUITableViewCellStyleDefault" id="SfJ-vQ-JZF">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SfJ-vQ-JZF" id="zgM-ll-0J1">

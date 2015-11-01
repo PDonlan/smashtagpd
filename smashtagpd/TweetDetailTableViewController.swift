@@ -10,6 +10,10 @@ import UIKit
 
 class TweetDetailTableViewController: UITableViewController {
     
+    private struct Storyboard {
+        static let cellIdent = "TweetDetail"
+    }
+    
     var tweet: Tweet? {
         didSet {
             updateUI()
@@ -40,23 +44,52 @@ class TweetDetailTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 3
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if section == 0 {return tweet?.hashtags.count ?? 0}
+        if section == 1 {return tweet?.userMentions.count ?? 0}
+        if section == 2 {return tweet?.urls.count ?? 0}
         return 0
     }
 
-    /*
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        // if a section is empty return nil for title so it wont show.
+        if self.tableView(tableView,  numberOfRowsInSection: section) == 0 {
+            return nil
+        }
+        
+        switch (section){
+            
+            case 0: return "hashtags"
+            case 1: return "mentions"
+            case 2: return "URLs"
+            default: return ""
+            
+        }
+        
+    }
+    
+    //todo: add urls, then clean up code, then deal with clicking on a user/url/hashtag to initiate a new search. Then deal with media items (photos)
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.cellIdent, forIndexPath: indexPath)
 
-        // Configure the cell...
+        // Configure the cell... 
+        
+        switch (indexPath.section) {
+        case 0: cell.textLabel?.text = tweet?.hashtags[indexPath.row].keyword
+        case 1: cell.textLabel?.text = tweet?.userMentions[indexPath.row].keyword
+        case 2: cell.textLabel?.text = tweet?.urls[indexPath.row].keyword
+        default: break
 
+        }
+        
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

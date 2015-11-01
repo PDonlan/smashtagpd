@@ -167,13 +167,13 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         print(segue.identifier)
         
- //       if let dtvc = segue.destinationViewController as? TweetDetailTableViewController {
-        if let dtvc = segue.destinationViewController as? WombatTableViewController {
+        if let dtvc = segue.destinationViewController as? TweetDetailTableViewController {
+ //       if let dtvc = segue.destinationViewController as? WombatTableViewController {
             print(sender)
             if let cell = sender as? TweetTableViewCell {
 
-//                print(cell.tweet)
-//                dtvc.tweet = cell.tweet
+                print(cell.tweet)
+                dtvc.tweet = cell.tweet
             }
             
                         // Pass the selected object to the new view controller.
