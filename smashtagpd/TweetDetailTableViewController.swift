@@ -21,8 +21,7 @@ class TweetDetailTableViewController: UITableViewController {
     }
 
     func updateUI(){
-        self.title = "\(tweet?.user)" //tweet?.id
-        // get table view to display two sections say hashtags and mentions then query # of sections and return ttiles
+        self.title = "\(tweet?.user)"
     }
 
     override func viewDidLoad() {
@@ -48,11 +47,16 @@ class TweetDetailTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        if section == 0 {return tweet?.hashtags.count ?? 0}
-        if section == 1 {return tweet?.userMentions.count ?? 0}
-        if section == 2 {return tweet?.urls.count ?? 0}
-        return 0
+        
+        // return the number of rows
+        
+        switch (section){
+        case 0: return tweet?.hashtags.count ?? 0
+        case 1: return tweet?.userMentions.count ?? 0
+        case 2: return tweet?.urls.count ?? 0
+        default: return 0
+            
+        }
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -72,7 +76,7 @@ class TweetDetailTableViewController: UITableViewController {
         
     }
     
-    //todo: add urls, then clean up code, then deal with clicking on a user/url/hashtag to initiate a new search. Then deal with media items (photos)
+    //todo: add urls, then clean up code, then deal with clicking on a user/hashtag/url to initiate a new search or browser launch. Then deal with media items (photos)
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.cellIdent, forIndexPath: indexPath)
