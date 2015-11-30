@@ -42,7 +42,7 @@ class TweetDetailTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        // #warning Incomplete implementation, compute & return the number of sections
         return 3
     }
 
@@ -51,6 +51,7 @@ class TweetDetailTableViewController: UITableViewController {
         // return the number of rows
         
         switch (section){
+        
         case 0: return tweet?.hashtags.count ?? 0
         case 1: return tweet?.userMentions.count ?? 0
         case 2: return tweet?.urls.count ?? 0
@@ -59,6 +60,7 @@ class TweetDetailTableViewController: UITableViewController {
         }
     }
 
+    
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         // if a section is empty return nil for title so it wont show.
         if self.tableView(tableView,  numberOfRowsInSection: section) == 0 {
@@ -90,11 +92,35 @@ class TweetDetailTableViewController: UITableViewController {
         default: break
 
         }
-        
+//        print(cell.textLabel?.text)
         return cell
     }
     
+    
+    // MARK: clicks on entry
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("it worked","section ",indexPath.section,"row ",indexPath.row)
+        
+        switch (indexPath.section) {
+            case 0:
+                if let content = tweet?.hashtags[indexPath.row].keyword {
+                    print(content)
+            }
+            case 1:
+                if let content = tweet?.userMentions[indexPath.row].keyword {
+                    print(content)
+            }
+            case 2:
+                if let content = tweet?.urls[indexPath.row].keyword {
+                    print(content)
+            }
+        default: print("nothing")
+        
+        }
 
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
