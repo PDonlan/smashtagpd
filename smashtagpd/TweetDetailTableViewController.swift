@@ -114,8 +114,11 @@ class TweetDetailTableViewController: UITableViewController {
             case 2:
                 if let content = tweet?.urls[indexPath.row].keyword {
                     print(content)
+                    if let url = NSURL(string: content) {
+                        UIApplication.sharedApplication().openURL(url)
+                    }
             }
-        default: print("nothing")
+        default: print("Click on case error: TweetDetailViewController")
         
         }
 
