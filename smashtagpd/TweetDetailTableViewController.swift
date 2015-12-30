@@ -101,12 +101,14 @@ class TweetDetailTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("it worked","section ",indexPath.section,"row ",indexPath.row)
+
         
         switch (indexPath.section) {
             case 0:
                 if let content = tweet?.hashtags[indexPath.row].keyword {
                     print(content)
-            }
+                    self.performSegueWithIdentifier("newTweetSearch", sender:indexPath)
+           }
             case 1:
                 if let content = tweet?.userMentions[indexPath.row].keyword {
                     print(content)
@@ -122,6 +124,15 @@ class TweetDetailTableViewController: UITableViewController {
         
         }
 
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("prepare sender \(sender)" )
+        
+        if let svc = segue.destinationViewController as? TweetTableViewController {
+            svc.searchText = "#wombat"
+            
+        }
     }
     
     /*

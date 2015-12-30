@@ -164,12 +164,15 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation */
+    
+
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 //        print(segue.identifier)
         
         if let dtvc = segue.destinationViewController as? TweetDetailTableViewController {
- //       if let dtvc = segue.destinationViewController as? WombatTableViewController {
- //           print(sender)
+
             if let cell = sender as? TweetTableViewCell {
 
 //                print(cell.tweet)
