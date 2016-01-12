@@ -21,7 +21,7 @@ class TweetDetailTableViewController: UITableViewController {
     }
 
     func updateUI(){
-        self.title = "\(tweet?.user)"
+        self.title = "Tweet Detail"
     }
 
     override func viewDidLoad() {
@@ -40,21 +40,24 @@ class TweetDetailTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    
+    private var sections = ["hashtags", "mentions", "URLs", "Photos"]
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, compute & return the number of sections
-        return 3
+        return sections.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         // return the number of rows
         
-        switch (section){
+        switch (sections[section]) {
         
-        case 0: return tweet?.hashtags.count ?? 0
-        case 1: return tweet?.userMentions.count ?? 0
-        case 2: return tweet?.urls.count ?? 0
+        case "hashtags": return tweet?.hashtags.count ?? 0
+        case "mentions": return tweet?.userMentions.count ?? 0
+        case "URLs": return tweet?.urls.count ?? 0
+        case "Photos": return tweet?.media.count ?? 0
         default: return 0
             
         }
@@ -67,28 +70,21 @@ class TweetDetailTableViewController: UITableViewController {
             return nil
         }
         
-        switch (section){
-            
-            case 0: return "hashtags"
-            case 1: return "mentions"
-            case 2: return "URLs"
-            default: return ""
-            
-        }
-        
+        return sections[section];
     }
     
-    //todo: add urls, then clean up code, then deal with clicking on a user/hashtag/url to initiate a new search or browser launch. Then deal with media items (photos)
+    //todo: clean up code & return to MVC issues, manage https, deal with media items (photos)
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.cellIdent, forIndexPath: indexPath)
 
         // Configure the cell... 
         
-        switch (indexPath.section) {
-        case 0: cell.textLabel?.text = tweet?.hashtags[indexPath.row].keyword
-        case 1: cell.textLabel?.text = tweet?.userMentions[indexPath.row].keyword
-        case 2: cell.textLabel?.text = tweet?.urls[indexPath.row].keyword
+        switch sections[indexPath.section] {
+        case "hashtags": cell.textLabel?.text = tweet?.hashtags[indexPath.row].keyword
+        case "mentions": cell.textLabel?.text = tweet?.userMentions[indexPath.row].keyword
+        case "URLs": cell.textLabel?.text = tweet?.urls[indexPath.row].keyword
+        case "Photos": cell.textLabel?.text = tweet?.media[indexPath.row].description
         default: break
 
         }
@@ -98,39 +94,54 @@ class TweetDetailTableViewController: UITableViewController {
     
     
     // MARK: clicks on entry
+    var testCase = "nothing"
+    var content = "#wombat"
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("it worked","section ",indexPath.section,"row ",indexPath.row)
-
+//        print("it worked","section ",indexPath.section,"row ",indexPath.row)
         
-        switch (indexPath.section) {
-            case 0:
-                if let content = tweet?.hashtags[indexPath.row].keyword {
-                    print(content)
+        switch (sections[indexPath.section]) {
+            case "hashtags":
+                    content = (tweet?.hashtags[indexPath.row].keyword)!
+                    testCase = "hashtag"
                     self.performSegueWithIdentifier("newTweetSearch", sender:indexPath)
-           }
-            case 1:
-                if let content = tweet?.userMentions[indexPath.row].keyword {
-                    print(content)
-            }
-            case 2:
+
+            case "mentions":
+                    content = (tweet?.userMentions[indexPath.row].keyword)!
+                    testCase = "usermention"
+                    self.performSegueWithIdentifier("newTweetSearch", sender:indexPath)
+            case "URLs":
                 if let content = tweet?.urls[indexPath.row].keyword {
-                    print(content)
                     if let url = NSURL(string: content) {
                         UIApplication.sharedApplication().openURL(url)
                     }
-            }
+                }
+            case "Photos":
+                if let url = tweet?.media[indexPath.row].url {
+                    UIApplication.sharedApplication().openURL(url)
+                }
         default: print("Click on case error: TweetDetailViewController")
         
         }
-
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         print("prepare sender \(sender)" )
         
         if let svc = segue.destinationViewController as? TweetTableViewController {
-            svc.searchText = "#wombat"
+            svc.searchText = content
+//            switch (testCase) {
+//            case "hashtag":
+//                    print(content)
+//                    svc.searchText = content
+//
+//            case "usermention":
+//                    print(content)
+//                    svc.searchText = content
+//
+//            default: print("Click on seguecase error: TweetDetailViewController")
+//                
+//            }
             
         }
     }

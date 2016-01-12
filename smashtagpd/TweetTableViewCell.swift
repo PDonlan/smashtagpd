@@ -44,7 +44,7 @@ class TweetTableViewCell: UITableViewCell
             tweetTextLabel.attributedText = text
             tweetScreenNameLabel?.text = "\(tweet.user)"  //tweet user description
             
-            if let profileImageURL = tweet.user.profileImageURL {           //blocks main thread todo: fix
+            if let profileImageURL = tweet.user.profileImageURL {     //blocks main thread todo: fix
                 if let imageData = NSData(contentsOfURL: profileImageURL)
                 {
                     tweetProfileImageView?.image = UIImage(data: imageData)
