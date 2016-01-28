@@ -31,7 +31,7 @@ class TweetTableViewCell: UITableViewCell
         if let tweet = self.tweet
         {
             tweetTextLabel?.text = tweet.text
-            var text = NSMutableAttributedString(attributedString: tweetTextLabel.attributedText!)
+            let text = NSMutableAttributedString(attributedString: tweetTextLabel.attributedText!)
             for index in tweet.hashtags {
                 text.addAttribute(NSForegroundColorAttributeName, value:UIColor.greenColor(), range:index.nsrange)
             }
