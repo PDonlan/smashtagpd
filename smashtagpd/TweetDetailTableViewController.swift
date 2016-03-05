@@ -69,11 +69,11 @@ class TweetDetailTableViewController: UITableViewController {
         if self.tableView(tableView,  numberOfRowsInSection: section) == 0 {
             return nil
         }
-        
+
         return sections[section];
     }
     
-    //todo: clean up code & return to MVC issues, manage https, deal with media items (photos)
+    //todo: return to MVC issues, deal with media items (photos)
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.cellIdent, forIndexPath: indexPath)
@@ -85,6 +85,7 @@ class TweetDetailTableViewController: UITableViewController {
         case "mentions": cell.textLabel?.text = tweet?.userMentions[indexPath.row].keyword
         case "URLs": cell.textLabel?.text = tweet?.urls[indexPath.row].keyword
         case "Photos": cell.textLabel?.text = tweet?.media[indexPath.row].description
+            print(" media description = ",cell.textLabel?.text)
         default: break
 
         }
@@ -132,7 +133,7 @@ class TweetDetailTableViewController: UITableViewController {
             svc.searchText = content
 //            switch (testCase) {
 //            case "hashtag":
-//                    print(content)
+//            print("content = ",content)
 //                    svc.searchText = content
 //
 //            case "usermention":

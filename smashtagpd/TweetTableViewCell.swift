@@ -47,7 +47,8 @@ class TweetTableViewCell: UITableViewCell
             tweetTextLabel.attributedText = text
             tweetScreenNameLabel?.text = "\(tweet.user)"  //tweet user description
             
-            if let profileImageURL = tweet.user.profileImageURL {     //blocks main thread todo: fix
+            if let profileImageURL = tweet.user.profileImageURL {
+        //blocks main thread todo: fix
                 if let imageData = NSData(contentsOfURL: profileImageURL)
                 {
                     tweetProfileImageView?.image = UIImage(data: imageData)
@@ -55,15 +56,13 @@ class TweetTableViewCell: UITableViewCell
             
             }
             for item in tweet.media {
-                print("tweet media = ", item.url)
+//                print("tweet media = ", item.url)
 
-                    //{     //blocks main thread todo: fix
-                    if let imageData = NSData(contentsOfURL: item.url)
-                    {
-                        tweetImageView?.image = UIImage(data: imageData)
-                    }
-//
-//                }
+        //blocks main thread todo: fix
+                if let imageData = NSData(contentsOfURL: item.url)
+                {
+                    tweetImageView?.image = UIImage(data: imageData)
+                }
             }
 //            let formatter = NSDateFormatter()
 //            if NSDate().timeIntervalSinceDate(tweet.created) > 24*60*60 {
