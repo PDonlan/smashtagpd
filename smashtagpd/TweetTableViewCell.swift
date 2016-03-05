@@ -22,10 +22,13 @@ class TweetTableViewCell: UITableViewCell
 
     @IBOutlet weak var tweetTextLabel: UILabel!
     
+    @IBOutlet weak var tweetImageView: UIImageView!
+    
     func updateUI() {                               //write out tweets
         tweetTextLabel?.attributedText = nil
         tweetScreenNameLabel?.text = nil
         tweetProfileImageView?.image = nil
+        tweetImageView?.image = nil
       
         // load new information from our tweet if any
         if let tweet = self.tweet
@@ -51,7 +54,17 @@ class TweetTableViewCell: UITableViewCell
                 }
             
             }
-            
+            for item in tweet.media {
+                print("tweet media = ", item.url)
+
+                    //{     //blocks main thread todo: fix
+                    if let imageData = NSData(contentsOfURL: item.url)
+                    {
+                        tweetImageView?.image = UIImage(data: imageData)
+                    }
+//
+//                }
+            }
 //            let formatter = NSDateFormatter()
 //            if NSDate().timeIntervalSinceDate(tweet.created) > 24*60*60 {
 //                formatter.dateStyle = NSDateFormatterStyle.ShortStyle
