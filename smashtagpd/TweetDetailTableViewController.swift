@@ -84,8 +84,12 @@ class TweetDetailTableViewController: UITableViewController {
         case "hashtags": cell.textLabel?.text = tweet?.hashtags[indexPath.row].keyword
         case "mentions": cell.textLabel?.text = tweet?.userMentions[indexPath.row].keyword
         case "URLs": cell.textLabel?.text = tweet?.urls[indexPath.row].keyword
-        case "Photos": cell.textLabel?.text = tweet?.media[indexPath.row].description
-            print(" media description = ",cell.textLabel?.text)
+        case "Photos":
+//            cell.textLabel?.text = tweet?.media[indexPath.row].description
+            let imageURL = tweet?.media[indexPath.row].url
+            let imageData = NSData(contentsOfURL: imageURL!)
+            cell.imageView?.image = UIImage(data: imageData!)
+            print(" media description = ",imageURL)
         default: break
 
         }
