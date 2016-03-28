@@ -85,11 +85,13 @@ class TweetDetailTableViewController: UITableViewController {
         case "mentions": cell.textLabel?.text = tweet?.userMentions[indexPath.row].keyword
         case "URLs": cell.textLabel?.text = tweet?.urls[indexPath.row].keyword
         case "Photos":
-//            cell.textLabel?.text = tweet?.media[indexPath.row].description
+            cell.textLabel?.text = tweet?.media[indexPath.row].description
             let imageURL = tweet?.media[indexPath.row].url
+            let imageAspectRatio = tweet?.media[indexPath.row].aspectRatio
+//            print("imageAspectRation =", imageAspectRatio)
             let imageData = NSData(contentsOfURL: imageURL!)
-            cell.imageView?.image = UIImage(data: imageData!)
-            print(" media description = ",imageURL)
+            cell.imageView?.image = UIImage(data: imageData!, scale: CGFloat( imageAspectRatio!) )
+//            print(" media description = ",imageURL)
         default: break
 
         }
