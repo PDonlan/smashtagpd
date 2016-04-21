@@ -26,6 +26,8 @@ class TweetDetailTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableViewAutomaticDimension //calculate size
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -50,7 +52,7 @@ class TweetDetailTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        // return the number of rows
+        // return the number of rows for a give section
         
         switch (sections[section]) {
         
@@ -88,14 +90,13 @@ class TweetDetailTableViewController: UITableViewController {
             cell.textLabel?.text = tweet?.media[indexPath.row].description
             let imageURL = tweet?.media[indexPath.row].url
             let imageAspectRatio = tweet?.media[indexPath.row].aspectRatio
-//            print("imageAspectRation =", imageAspectRatio)
             let imageData = NSData(contentsOfURL: imageURL!)
-            cell.imageView?.image = UIImage(data: imageData!, scale: CGFloat( imageAspectRatio!) )
-//            print(" media description = ",imageURL)
+            cell.imageView?.image = UIImage(data: imageData!,scale: CGFloat(imageAspectRatio!))
+
         default: break
 
         }
-//        print(cell.textLabel?.text)
+
         return cell
     }
     
@@ -105,7 +106,6 @@ class TweetDetailTableViewController: UITableViewController {
     var content = "#wombat"
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        print("it worked","section ",indexPath.section,"row ",indexPath.row)
         
         switch (sections[indexPath.section]) {
             case "hashtags":
@@ -136,19 +136,8 @@ class TweetDetailTableViewController: UITableViewController {
         print("prepare sender \(sender)" )
         
         if let svc = segue.destinationViewController as? TweetTableViewController {
+
             svc.searchText = content
-//            switch (testCase) {
-//            case "hashtag":
-//            print("content = ",content)
-//                    svc.searchText = content
-//
-//            case "usermention":
-//                    print(content)
-//                    svc.searchText = content
-//
-//            default: print("Click on seguecase error: TweetDetailViewController")
-//                
-//            }
             
         }
     }

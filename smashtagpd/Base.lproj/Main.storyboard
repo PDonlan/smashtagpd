@@ -19,7 +19,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="600" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                            <textInputTraits key="textInputTraits" keyboardType="twitter"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="twitter"/>
                         </textField>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Tweet" rowHeight="272" id="8dU-NH-gXN" customClass="TweetTableViewCell" customModule="smashtagpd" customModuleProvider="target">
@@ -117,10 +117,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <imageView key="tableFooterView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="5ZV-aw-idF">
-                            <rect key="frame" x="0.0" y="116" width="600" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </imageView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetDetail" textLabel="eYg-Sm-7gx" style="IBUITableViewCellStyleDefault" id="SfJ-vQ-JZF">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
@@ -154,6 +150,25 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageView" rowHeight="203" id="orl-Jg-bz9">
+                                <rect key="frame" x="0.0" y="116" width="600" height="203"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="orl-Jg-bz9" id="mAw-Lw-Wdw">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="202.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5u7-SD-L1s">
+                                            <rect key="frame" x="8" y="8" width="288" height="186.5"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="5u7-SD-L1s" secondAttribute="bottom" id="0YF-gP-i0B"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="5u7-SD-L1s" secondAttribute="trailing" constant="296" id="Yry-xW-tam"/>
+                                        <constraint firstItem="5u7-SD-L1s" firstAttribute="leading" secondItem="mAw-Lw-Wdw" secondAttribute="leadingMargin" id="fsT-7r-7YN"/>
+                                        <constraint firstItem="5u7-SD-L1s" firstAttribute="top" secondItem="mAw-Lw-Wdw" secondAttribute="topMargin" id="tBI-a5-qPZ"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>

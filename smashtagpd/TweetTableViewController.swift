@@ -14,12 +14,15 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
 {
 
     var tweets = [[Tweet]]()  //array of arrays
+//    var tweetHistory:String?     // history of tweets
     var searchText: String? = "#stanford" {
-        didSet {
-            lastSuccessfulRequest = nil
+        didSet {    //with new tweet search
+//            tweetHistory.append(lastSuccessfulRequest)  //todo: populate history of tweets
+            lastSuccessfulRequest = nil  //reset last successfull tweet
             searchTextField?.text = searchText
-            tweets.removeAll()
+            tweets.removeAll()   // clear out table of old tweets
             tableView.reloadData()
+
             refresh()
         }
     }
@@ -92,7 +95,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if textField == searchTextField {
-            textField.resignFirstResponder()            //shut off refresh indication
+            textField.resignFirstResponder()            // close keyboard view
             searchText = textField.text
         }
         return true
